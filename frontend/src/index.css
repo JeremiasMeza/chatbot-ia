@@ -1,0 +1,14 @@
+/* src/index.css */
+@import "tailwindcss";
+
+
+/* Opcional: estilos base del chat */
+.chat-bubble {
+  @apply rounded-lg px-3 py-2 mb-2;
+}
+.chat-user {
+  @apply bg-blue-600 text-white self-end;
+}
+.chat-ai {
+  @apply bg-gray-100 text-gray-900;
+}
