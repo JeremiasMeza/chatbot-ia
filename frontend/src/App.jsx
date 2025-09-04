@@ -28,7 +28,8 @@ export default function App() {
     try {
       const form = new FormData();
       form.append("file", file);
-      const res = await fetch(`${import.meta.env.VITE_API_URL || "/api"}/upload/`, {
+      const base = import.meta.env.VITE_API_URL || "http://localhost:8000";
+      const res = await fetch(`${base}/upload/`, {
         method: "POST",
         body: form,
       });
