@@ -5,7 +5,7 @@ from app.db.chroma_client import upsert_documents
 
 router = APIRouter()
 
-@router.post("/admin/upload")
+@router.post("/upload")
 async def upload_pdf(file: UploadFile = File(...)):
     if not file.filename.lower().endswith(".pdf"):
         raise HTTPException(status_code=400, detail="Only PDF files are accepted")

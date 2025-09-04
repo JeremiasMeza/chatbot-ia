@@ -1,11 +1,11 @@
 from fastapi import APIRouter, HTTPException
-from app.models.schemas import QueryRequest, QueryResponse, SourceChunk
+from app.models.schemas import AskRequest, AskResponse, SourceChunk
 from app.services.rag_pipeline import answer_with_context
 
 router = APIRouter()
 
-@router.post("/query", response_model=QueryResponse)
-def query(req: QueryRequest):
+@router.post("/ask", response_model=AskResponse)
+def ask(req: AskRequest):
     if not req.question or not req.question.strip():
         raise HTTPException(status_code=400, detail="Question is required")
 
@@ -27,6 +27,6 @@ def query(req: QueryRequest):
                 index=meta.get("index"),
                 distance=dist
             ))
-        return QueryResponse(reply=result["reply"], sources=sources)
+        return AskResponse(reply=result["reply"], sources=sources)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

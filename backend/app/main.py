@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.api.routers import health, chat, admin
-from app.api.routers import query as query_router
+from app.api.routers import health, chat, docs
+from app.api.routers import ask as ask_router
 
 app = FastAPI(title="Chatbot Backend", version="0.2.0")
 
@@ -15,8 +15,8 @@ app.add_middleware(
 
 app.include_router(health.router, prefix="/api", tags=["health"])
 app.include_router(chat.router,   prefix="/api", tags=["chat"])
-app.include_router(admin.router,  prefix="/api", tags=["admin"])
-app.include_router(query_router.router, prefix="/api", tags=["query"])
+app.include_router(docs.router,   prefix="/api/docs", tags=["docs"])
+app.include_router(ask_router.router, prefix="/api", tags=["ask"])
 
 @app.get("/")
 def root():
