@@ -1,19 +1,20 @@
 from typing import List, Optional
 from pydantic import BaseModel
 
+
 class ChatRequest(BaseModel):
     message: str
+
 
 class ChatResponse(BaseModel):
     reply: str
 
-from typing import List, Optional
-from pydantic import BaseModel
 
-class QueryRequest(BaseModel):
+class AskRequest(BaseModel):
     question: str
     top_k: int = 4
-    score_threshold: Optional[float] = None  # ej: 0.2 (opcional)
+    score_threshold: Optional[float] = None
+
 
 class SourceChunk(BaseModel):
     text: str
@@ -21,6 +22,7 @@ class SourceChunk(BaseModel):
     index: Optional[int] = None
     distance: Optional[float] = None
 
-class QueryResponse(BaseModel):
+
+class AskResponse(BaseModel):
     reply: str
     sources: List[SourceChunk] = []
