@@ -1,8 +1,0 @@
-fastapi
-uvicorn[standard]
-httpx
-pydantic-settings
-chromadb
-sentence-transformers
-pypdf
-python-multipart
